@@ -16,6 +16,8 @@ if [[ $DAY == '7' || ! -d /path/of/backups/files-snar ]]; then
 	if [[ ! -d /path/of/backups/files-snar ]]; then
 		# If the directory is not exist, this directory is created
 		mkdir -p /path/of/backups/files-snar
+		cp /path/of/backups/file.snar /path/of/backups/files-snar/file-$DATE.snar
+		rm /path/of/backups/file.snar
 	else
 		# If the directory exist, a backup copy of the file that has the information is made of the copy and is deleted the original file
 		cp /path/of/backups/file.snar /path/of/backups/files-snar/file-$DATE.snar
