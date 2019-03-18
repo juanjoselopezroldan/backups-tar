@@ -3,7 +3,7 @@
 #Get the day of the week for do backup full the sundays and the rest of days a backup incremental
 DAY=$(date '+%u')
 DATE=$(date '+%Y%m%d')
-DATE-1=$(date '+%Y%m%d' --date='-1 day')
+DATE_1=$(date '+%Y%m%d' --date='-1 day')
 
 #If is sunday or if is the firts copy, does backups full and if not is sunday does backups incrementals
 if [[ $DAY == '7' || ! -d /path/of/backups/files-snar ]]; then
@@ -26,7 +26,7 @@ if [[ $DAY == '7' || ! -d /path/of/backups/files-snar ]]; then
 else
 	# If the file snar is not exist, copy the backrest of this file
 	if [[ ! -f /path/of/backups/file.snar ]]; then
-		cp /path/of/backups/files-snar/file-$DATE-1.snar /path/of/backups/file.snar
+		cp /path/of/backups/files-snar/file-$DATE_1.snar /path/of/backups/file.snar
 	fi
 	cd /path/of/backups/ \
 	&& tar --listed-incremental /path/of/backups/file.snar -czpf /path/of/backups/backup-incremental-$DATE.tar.gz "/PATH/DIRECTORY"
